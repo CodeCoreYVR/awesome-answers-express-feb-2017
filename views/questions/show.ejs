@@ -3,7 +3,7 @@
   <a href="/questions">Back</a>
   <h1><%= question.title %></h1>
   <p><%= question.description %></p>
-  <p><strong>Created At:</strong><%= question.createdAt %></p>
+  <p><strong>Created At:</strong> <%= question.createdAt %></p>
 
   <h2>Answers</h2>
 
@@ -14,5 +14,14 @@
 
     <input type="submit" name="submit" value="Submit"/>
   </form>
+
+  <ul class="answers-list">
+    <% for (let answer of answers) { %>
+      <li>
+        <p><%= answer.content %></p>
+        <p><strong>Created At:</strong> <%= answer.createdAt %></p>
+      </li>
+    <% } %>
+  </ul>
 
 <%- include('../partials/footer') %>
