@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+const answers = require('./answers');
+
 const Question = require('../models/index').Question;
 // 👇 NEW! Destructuring
 // const {Question} = require('../models/index');
@@ -55,6 +57,9 @@ router.get('/:id', function (req, res) {
       res.render('questions/show', {question: question})
     });
 })
+
+// URL: /questions/:questionId/answers VERB: All of them!
+router.use('/:questionId/answers', answers);
 
 module.exports = router;
 
