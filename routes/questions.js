@@ -5,6 +5,7 @@ const Question = require('../models/index').Question;
 // 👇 NEW! Destructuring
 // const {Question} = require('../models/index');
 
+// Questions#index URL: /questions VERB: GET
 router.get('/', function (request, response, next) {
   Question
     .findAll() // this returns promise...
@@ -19,4 +20,29 @@ router.get('/', function (request, response, next) {
   // All Sequelize query methods return a promise
 })
 
+// Questions#show URL: /questions/:id VERB: GET
+// For a url `/questions/99`, the req.params object will be equal to {id: '99'}
+router.get('/:id', function (req, res) {
+  const id = req.params.id;
+
+  Question
+    .findById(id)
+    .then(function (question) {
+      res.render('questions/show', {question: question})
+    });
+})
+
 module.exports = router;
+
+
+
+
+
+
+
+
+
+
+
+
+/* */
